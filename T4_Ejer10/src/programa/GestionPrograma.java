@@ -9,8 +9,11 @@ public class GestionPrograma {
 		if(contador > 24) {
 			prgms[contador]= new Programa (software);
 			contador++;
-		}
-		
+		}	
+	}
+	
+	public static void showContador() {
+		System.out.println(contador);
 	}
 	
 	public static Programa[] getProgramas() {

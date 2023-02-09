@@ -20,7 +20,16 @@ public class Programa {
 		this.precio = 0.0;
 	}
 	
-	
+	/**
+	 * 
+	 * @param nombre
+	 * @param version
+	 * @param funcion
+	 * @param anyoLanzamiento
+	 * @param empresaDev
+	 * @param licencia
+	 * @param precio
+	 */
 	public Programa(String nombre, String version, String funcion, String anyoLanzamiento, String empresaDev,
 			String licencia, double precio) {
 		super();
