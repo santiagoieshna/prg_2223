@@ -13,6 +13,7 @@ public class mainPrograma {
 		String empresaDev= "Ubisoft";
 		double prize = 45;
 		
+		
 		Programa prg = new Programa(nombre, version, funcion, anyoLanzamiento,empresaDev,licencia,prize);
 		
 		GestionPrograma.addPrograma(prg);
@@ -20,6 +21,8 @@ public class mainPrograma {
 		GestionPrograma.filterLicencia(licencia);
 		GestionPrograma.showContador();
 
+		
+		
 	}
 
 }

@@ -6,7 +6,7 @@ public class GestionPrograma {
 	private static int contador=0;
 	
 	public static void addPrograma(Programa software) {
-		if(contador > 24) {
+		if(contador < 24) {
 			prgms[contador]= new Programa (software);
 			contador++;
 		}	
