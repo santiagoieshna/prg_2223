@@ -1,6 +1,7 @@
 package clases;
 
 import java.time.LocalDate;
+import java.util.Iterator;
 
 public class GestionAlquileres {
 	private VehiculoAlquilado [] alquilados = new VehiculoAlquilado[7];
@@ -29,22 +30,48 @@ public class GestionAlquileres {
 				LocalDate.of(2021, 01, 1), 10);
 	}
 	
+	/**
+	 * Metodo que busca un cliente por la matricula de un vehiculo
+	 * @param matricula
+	 * @return El objeto cliente si la matricula coincide
+	 * 			objeto cliente NULL si la matricula no coincide
+	 */
 	public Cliente getClienteAlquiler(String matricula) {
-		Cliente cli = new Cliente(4, "Tom�s" ,"Sanz Eno");
-		return cli;
+		Cliente client = null;
+		for (VehiculoAlquilado alquilado : alquilados) {
+			if(alquilado.getVehiculo().getMatricula().equals(matricula)) {
+				client = alquilado.getCliente();
+			}
+		}
+		return client;
 	}
 	
 	public int contarAlquileresCliente(int idCliente) {
-		return 5;
+		int cont = 0;
+		for (VehiculoAlquilado alquiler:this.alquilados) {
+			if(alquiler.getCliente().getId() == idCliente) {
+				cont ++;
+			}
+		}
+		return cont;
 	}
 	
 	public double sumaImporteTodosAlquileres() {
-		return 2.333;
+		double suma=0;
+		for(VehiculoAlquilado alquilado : this.alquilados) {
+			suma+=alquilado.getVehiculo().getTarifa();
+		}
+		return suma;
 	}
 	
 	
 	public void mostrarAlquileresMatricula(String matricula) {
-		
+		for (VehiculoAlquilado alquilado : alquilados) {
+			if(alquilado.getVehiculo().getMatricula().equals(matricula)) {
+				System.out.println(alquilado.getVehiculo().toString());
+				System.out.println(alquilado.getCliente().toString());
+			}
+		}
 	}
 	
 }

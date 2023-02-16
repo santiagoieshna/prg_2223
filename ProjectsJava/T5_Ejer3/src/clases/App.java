@@ -25,6 +25,10 @@ public class App {
 				+ ve2.getImporteAlquiler());
 		System.out.println();
 		System.out.println(ve1.toString());
+		GestionAlquileres gest = new GestionAlquileres();
+		
+		gest.mostrarAlquileresMatricula("1200-BMC");
+		System.out.println(gest.contarAlquileresCliente(5));
 		
 	}
 
