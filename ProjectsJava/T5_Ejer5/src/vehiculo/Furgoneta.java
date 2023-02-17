@@ -2,7 +2,7 @@ package vehiculo;
 
 public class Furgoneta extends Vehiculo {
 
-	private int capacidad;
+	private int capacidad;//Litros
 	private int cargaMax;
 	
 	public Furgoneta(String matricula, String marca, String modelo, double tarifa, boolean disponible, int capacidad,

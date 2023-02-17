@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class App {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 		Cliente cliente = new Cliente(1, "Ana" ,"Robles Paz");
 		Vehiculo vehiculo = new Vehiculo("1200-BMC", "Seat", "Ibiza", 
@@ -19,7 +19,7 @@ public class App {
 				new Vehiculo("3888-jkk", "Ford", "Fiesta", 30.0, true), 
 				LocalDate.now(), 15);
 		
-		System.out.println("Quién alquiló el vehículo 1: "
+		System.out.println("Quiï¿½n alquilï¿½ el vehï¿½culo 1: "
 				+ ve1.getCliente().getNombreCompleto());
 		System.out.println("Importe alquile vehiculo 2: "
 				+ ve2.getImporteAlquiler());

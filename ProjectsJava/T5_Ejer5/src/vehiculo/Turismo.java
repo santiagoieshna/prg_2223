@@ -14,7 +14,7 @@ public class Turismo extends Vehiculo {
 
 	public Turismo(String matricula, String marca, String modelo, double tarifa, boolean disponible) {
 		super(matricula, marca, modelo, tarifa, disponible);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 //	public Turismo() {
