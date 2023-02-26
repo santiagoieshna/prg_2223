@@ -35,4 +35,11 @@ public class ColeccionProductos {
 		return -1;
 	}
 	
+	public void consultarProductosPorPaisOrigen(String country) {
+		
+		
+	}
+	
+	
+	
 }
