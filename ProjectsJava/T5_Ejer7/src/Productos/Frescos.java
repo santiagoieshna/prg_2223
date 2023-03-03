@@ -6,7 +6,7 @@ public class Frescos extends Productos {
 	private LocalDate fechaEnvasado;
 	private String paisOrigen;
 	
-	public Frescos(int idproducto, String descripcion, LocalDate fechaCaducidad, String numLote) {
+	public Frescos(String idproducto, String descripcion, LocalDate fechaCaducidad, String numLote) {
 		super(idproducto, descripcion, fechaCaducidad, numLote);
 		
 	}
@@ -19,7 +19,7 @@ public class Frescos extends Productos {
 	 * @param fechaEnvasado
 	 * @param paisOrigen
 	 */
-	public Frescos(int idproducto, String descripcion, LocalDate fechaCaducidad, String numLote,
+	public Frescos(String idproducto, String descripcion, LocalDate fechaCaducidad, String numLote,
 			LocalDate fechaEnvasado, String paisOrigen) {
 		super(idproducto, descripcion, fechaCaducidad, numLote);
 		this.fechaEnvasado = fechaEnvasado;
@@ -27,10 +27,6 @@ public class Frescos extends Productos {
 	}
 	public LocalDate getFechaEnvasado() {
 		return fechaEnvasado;
-	}
-	@Override
-	public String toString() {
-		return "Frescos [fechaEnvasado=" + fechaEnvasado + ", paisOrigen=" + paisOrigen + "]";
 	}
 	public void setFechaEnvasado(LocalDate fechaEnvasado) {
 		this.fechaEnvasado = fechaEnvasado;
@@ -42,5 +38,11 @@ public class Frescos extends Productos {
 		this.paisOrigen = paisOrigen;
 	}
 	
+	@Override
+	public String toString() {
+		return "Frescos [idproducto=" + this.getIdproducto() + ", descripcion=" + this.getDescripcion() + ",\n\t fechaCaducidad= "
+				+ this.getFechaCaducidad() + ", numLote=" + this.getNumLote() + ",fechaEnvasado=" + fechaEnvasado + ",+"
+				+ " paisOrigen=" + paisOrigen + "]";
+	}
 	
 }

@@ -9,9 +9,9 @@ public class Main {
 		Scanner entrada = new Scanner(System.in);
 		int opcion = 0;
 		boolean salida = false;
-		String preguntar = "1) Añadir un numero\n2) Eliminar un numero\n3) Sustituir un numero"
-				+ "\n4) Mostrar tamaño\n5) Mostrar true si esta vacio\n6) Vaciar lista\n7) Comprueba si"
-				+ " un elemento esta en la lista\n8) Salir";
+		String preguntar = "1) AÃ±adir un numero\n2) Eliminar un numero\n3) Sustituir un numero"
+				+ "\n4) Mostrar tamaÃ±o\n5) Mostrar true si esta vacio\n6) Vaciar lista\n7) Comprueba si"
+				+ " un elemento esta en la lista\n8)Ver arraylist \n9) Salir";
 		ArrayList<Integer> intList = new ArrayList<Integer>();
 
 		do {
@@ -22,31 +22,31 @@ public class Main {
 			switch (opcion) {
 			
 			case 1: {
-				// Añadir numero
-				System.out.print("Introduce el numero");
-				Integer numeroAñadir = entrada.nextInt();
-				intList.add(numeroAñadir);
+				// AÃ±adir numero
+				System.out.print("Introduce el numero: ");
+				Integer numeroAdd = entrada.nextInt();
+				intList.add(numeroAdd);
 				break;
 			}
 			case 2: {
 				// Borrar numero
-				System.out.println("¿Que posicion quieres borrar?");
+				System.out.print("Â¿Que posicion quieres borrar? ");
 				int pos = entrada.nextInt();
 				intList.remove(pos);
 				break;
 			}
 			case 3: {
 				// sustituir uno por otro
-				System.out.println("Introduce posicion que quieres y el numero que quieres añadir");
+				System.out.println("Introduce posicion que quieres y el numero que quieres aÃ±adir");
 				int posq = entrada.nextInt();
 				int annadir = entrada.nextInt();
 				intList.set(posq, annadir);
 				break;
 			}
 			case 4: {
-				// mostrar tamaño array
-				int tamaño = intList.size();
-				System.out.println(tamaño + " tamaño ");
+				// mostrar tamanio array
+				int tamanyo = intList.size();
+				System.out.println(tamanyo + " tamaÃ±o ");
 				break;
 			}
 			case 5: {
@@ -74,6 +74,13 @@ public class Main {
 				break;
 			}
 			case 8: {
+				intList.trimToSize();
+				for (Integer integer : intList) {
+					System.out.print(integer+" ");
+				}
+				
+			}
+			case 9: {
 				System.out.println("Hasta pronto");
 				salida = true;
 				break;

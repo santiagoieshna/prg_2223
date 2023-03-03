@@ -12,7 +12,7 @@ public class Refrigerados extends Productos {
 	 * @param numLote
 	 * @param orgSupervision
 	 */
-	public Refrigerados(int idproducto, String descripcion, LocalDate fechaCaducidad, String numLote,
+	public Refrigerados(String idproducto, String descripcion, LocalDate fechaCaducidad, String numLote,
 			String orgSupervision) {
 		super(idproducto, descripcion, fechaCaducidad, numLote);
 		this.orgSupervision = orgSupervision;
@@ -28,7 +28,8 @@ public class Refrigerados extends Productos {
 
 	@Override
 	public String toString() {
-		return "Refrigerados [orgSupervision=" + orgSupervision + "]";
+		return "Refrigerados [idproducto=" + this.getIdproducto() + ", descripcion=" + this.getDescripcion() + ",\n\t fechaCaducidad= "
+				+ this.getFechaCaducidad() + ", numLote=" + this.getNumLote() +", orgSupervision=" + orgSupervision + "]";
 	}
 	
 	

@@ -3,7 +3,7 @@ package Productos;
 import java.time.LocalDate;
 
 public abstract class  Productos {
-	private int idproducto;
+	private String idproducto;
 	private String descripcion;
 	private LocalDate fechaCaducidad;
 	private String numLote;
@@ -15,7 +15,7 @@ public abstract class  Productos {
 	 * @param fechaCaducidad
 	 * @param numLote
 	 */
-	public Productos(int idproducto, String descripcion, LocalDate fechaCaducidad, String numLote) {
+	public Productos(String idproducto, String descripcion, LocalDate fechaCaducidad, String numLote) {
 		
 		this.idproducto = idproducto;
 		this.descripcion = descripcion;
@@ -29,11 +29,11 @@ public abstract class  Productos {
 				+ fechaCaducidad + ", numLote=" + numLote + "]";
 	}
 
-	public int getIdproducto() {
+	public String getIdproducto() {
 		return idproducto;
 	}
 
-	public void setIdproducto(int idproducto) {
+	public void setIdproducto(String idproducto) {
 		this.idproducto = idproducto;
 	}
 

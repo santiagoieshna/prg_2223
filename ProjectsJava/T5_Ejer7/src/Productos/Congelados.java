@@ -14,7 +14,7 @@ public class Congelados extends Productos {
 	 * @param numLote
 	 * @param tempRecomendada
 	 */
-	public Congelados(int idproducto, String descripcion, LocalDate fechaCaducidad, String numLote,
+	public Congelados(String idproducto, String descripcion, LocalDate fechaCaducidad, String numLote,
 			double tempRecomendada) {
 		super(idproducto, descripcion, fechaCaducidad, numLote);
 		this.tempRecomendada = tempRecomendada;
@@ -31,7 +31,8 @@ public class Congelados extends Productos {
 	@Override
 	public String toString() {
 		
-		return "Congelados [tempRecomendada=" + tempRecomendada + "]";
+		return "Congelados  [idproducto=" + this.getIdproducto() + ", descripcion=" + this.getDescripcion() + ",\n\t fechaCaducidad="
+				+ this.getFechaCaducidad() + ", numLote=" + this.getNumLote() + ";,tempRecomendada=" + tempRecomendada + "]";
 	}
 	
 }
