@@ -50,8 +50,9 @@ public class ColeccionProductos {
 	}
 	
 	public Productos[] consultarProductosCaducados() {
+		Productos[] arrayPro = null;
 		
-		
+		return arrayPro;
 	}
 	
 	/**
