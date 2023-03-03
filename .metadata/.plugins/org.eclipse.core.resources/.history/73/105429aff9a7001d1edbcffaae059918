@@ -1,0 +1,10 @@
+package alumno;
+
+public class mainalumno {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
