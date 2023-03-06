@@ -94,7 +94,7 @@ public class ColeccionProductos {
 	 */
 	public int buscarProducto(String id) {
 		for (int i = 0; i < productos.length; i++) {
-			if (productos[i].getIdproducto() == id) {
+			if (productos!= null && productos[i].getIdproducto() == id) {
 				return i;
 			}
 		}
@@ -138,8 +138,7 @@ public class ColeccionProductos {
 		int cont = 0;
 
 		for (Productos producto : productos) {
-			if (producto instanceof Frescos) {
-				producto = (Frescos) producto;
+			if (producto !=null && producto instanceof Frescos) {
 				if (((Frescos) producto).getPaisOrigen().equals(pais)) {
 					cont++;
 				}

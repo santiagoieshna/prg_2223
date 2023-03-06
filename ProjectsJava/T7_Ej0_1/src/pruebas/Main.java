@@ -9,7 +9,7 @@ public class Main {
 		Scanner entrada = new Scanner(System.in);
 		int opcion = 0;
 		boolean salida = false;
-		String preguntar = "1) Añadir un numero\n2) Eliminar un numero\n3) Sustituir un numero"
+		String preguntar = "1) A�adir un numero\n2) Eliminar un numero\n3) Sustituir un numero"
 				+ "\n4) Mostrar tamaño\n5) Mostrar true si esta vacio\n6) Vaciar lista\n7) Comprueba si"
 				+ " un elemento esta en la lista\n8)Ver arraylist \n9) Salir";
 		ArrayList<Integer> intList = new ArrayList<Integer>();
