@@ -1,5 +1,6 @@
 package errores;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DivisionCero {
