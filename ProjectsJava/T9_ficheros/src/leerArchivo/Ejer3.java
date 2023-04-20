@@ -1,4 +1,4 @@
-package escribirArchivo;
+package leerArchivo;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
