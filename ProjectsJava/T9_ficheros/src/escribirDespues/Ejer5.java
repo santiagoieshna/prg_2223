@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ejer5 {
+	
 	public static void main(String[] args) {
+		
 		String archivo = "frase.txt";
 		List<String> cadenas = new ArrayList<>();
 		FileWriter fw =null;
@@ -20,6 +22,7 @@ public class Ejer5 {
 			//constructor con true como segundo parametro
 			fw = new FileWriter(archivo, true);
 			pw = new PrintWriter(new BufferedWriter(fw));
+			pw.println();
 			for (String frase : cadenas) {
 				pw.println(frase);
 			}
