@@ -72,4 +72,14 @@ public class Alumno implements java.io.Serializable{
 		return true;
 	}
 	
+	public StringBuilder notasToString() {
+		StringBuilder notasString = new StringBuilder();
+		for (int i = 0; i < notas.length; i++) {
+			notasString.append(String.valueOf(notas[i]));
+			if (i!=notas.length)
+				notasString.append(" ,");
+		}
+		return notasString;
+	}
+	
 }

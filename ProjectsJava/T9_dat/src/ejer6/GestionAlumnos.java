@@ -2,9 +2,12 @@ package ejer6;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,20 +19,47 @@ import alumno.Alumno;
 
 
 public class GestionAlumnos {
-//	private List<Alumno> alumnos;
+	private List<Alumno> alumnos;
 	
-	public static Double[] getNotasID(String codigo, ArrayList<Alumno> alumnos) {
+	/**
+	 * @param alumnos
+	 */
+	public GestionAlumnos(List<Alumno> alumnos) {
+		super();
+		this.alumnos = alumnos;
+	}
+	
+	public GestionAlumnos(String fichero) {
+		alumnos = new ArrayList<>();
+		cargarAlumnos(fichero);
+	}
+	
+	public Double[] getNotasID(String codigo, ArrayList<Alumno> alumnos) {
 		
 		return null;
 	}
 	
-	public static void crearDat(List<Alumno> alumnos) {
-		
-		
+	
+	public void mostrarNotas(String codigo) {
+		Alumno alum= buscarAlumno(codigo);
+		System.out.println(alum.notasToString());
 	}
 
-	public static void cargarAlumnos(List<Alumno> alumnos) {
-		String archivo = "res/Datos_Alumnos.txt";
+	private Alumno buscarAlumno(String codigo) {
+		Alumno alum = null;
+//		alumnos.forEach(alumno-> {
+//			if(alumno.getCodigo().equals(codigo))
+//				alum=alumno;
+//		});
+		for (Alumno alumno : alumnos) {
+			if(alumno.getCodigo().equals(codigo))
+				alum=alumno;
+		}
+		return alum;
+	}
+
+	private  void cargarAlumnos( String archivo) {
+		
 		FileReader fr = null;
 		BufferedReader lector = null;
 		List<String> datosAlumnos = new ArrayList<>();
@@ -40,7 +70,7 @@ public class GestionAlumnos {
 			leerFichero(datosAlumnos,lector);//Por referencia
 			fr.close();
 			lector.close();
-			formatearDatos(alumnos,datosAlumnos);
+			formatearDatos(datosAlumnos);
 		}catch (IOException e) {
 			e.printStackTrace();
 		}catch (Exception e) {
@@ -48,7 +78,7 @@ public class GestionAlumnos {
 		}
 	}
 
-	private static void formatearDatos(List<Alumno> alumnos, List<String> datosAlumnos) {
+	private void formatearDatos( List<String> datosAlumnos) {
 		
 		datosAlumnos.forEach(dato ->{
 			String[] campos = dato.split(";");
@@ -58,12 +88,38 @@ public class GestionAlumnos {
 			for (int i = 2; i < campos.length; i++) {
 				notas[i-2]=Double.valueOf(campos[i]);
 			}
-			alumnos.add(new Alumno(codigo, nombre, notas));
+			this.alumnos.add(new Alumno(codigo, nombre, notas));
 		});
 		
 	}
+	
+	public void crearArchivoDat( String nombreArchivo) {
+		ObjectOutputStream ow =null;
+		try {
+			ow = new ObjectOutputStream(new FileOutputStream(nombreArchivo));
+			
+//			alumnos.forEach(alumno->{
+//				try {
+//					ow.writeObject(alumno);
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			});
+			for (Alumno alumno : this.alumnos) {
+				ow.writeObject(alumno);
+			}
+			ow.close();
+		} catch (FileNotFoundException e) {
+		
+			e.printStackTrace();
+		} catch (IOException e) {
+		
+			e.printStackTrace();
+		}	
+	}
 
-	private static void leerFichero(List<String> datos, BufferedReader pw) throws IOException {
+	private void leerFichero(List<String> datos, BufferedReader pw) throws IOException {
 		String linea;
 //		datos.forEach(dato -> {
 //			try {
@@ -77,5 +133,10 @@ public class GestionAlumnos {
 			datos.add(linea);
 		}
 	}
+
+	public void printAllAlumnos() {
+		this.alumnos.forEach(alumno-> System.out.println(alumno.toString()));
+	}
+	
 
 }
