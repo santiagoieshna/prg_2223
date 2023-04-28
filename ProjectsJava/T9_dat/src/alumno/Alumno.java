@@ -41,6 +41,9 @@ public class Alumno implements java.io.Serializable{
 		return "Alumno [codigo=" + codigo + ", nombre=" + nombre + ", notas=" + Arrays.toString(notas) + "]";
 	}
 	
+	/*
+	 * Return nota media de los alumnos optenido de su atributo notas[]
+	 */
 	public Double getNotaMedia() {
 		Double sum=0D;
 		for (int i = 0; i < notas.length; i++) {
@@ -81,5 +84,17 @@ public class Alumno implements java.io.Serializable{
 		}
 		return notasString;
 	}
+	
+	public Double notaMasAlta() {
+		Double notaAlta = -99999D;
+		
+		for (Double nota : notas) {
+			if(nota>notaAlta)
+				notaAlta=nota;
+		}
+		
+		return notaAlta;
+	}
+	
 	
 }

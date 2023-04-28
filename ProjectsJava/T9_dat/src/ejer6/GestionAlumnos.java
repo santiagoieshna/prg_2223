@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -84,10 +85,18 @@ public class GestionAlumnos {
 			String[] campos = dato.split(";");
 			String codigo = campos[0];
 			String nombre = campos[1];
+			
 			Double[] notas= new Double[10];
-			for (int i = 2; i < campos.length; i++) {
-				notas[i-2]=Double.valueOf(campos[i]);
+			String[] notasString = Arrays.copyOfRange(campos, 2, campos.length);
+			
+			for (int i = 0; i < notasString.length; i++) {
+				notas[i]= Double.parseDouble(notasString[i]);
 			}
+			
+			// MANERA DE OBRERO
+//			for (int i = 2; i < campos.length; i++) {
+//				notas[i-2]=Double.valueOf(campos[i]);
+//			}
 			this.alumnos.add(new Alumno(codigo, nombre, notas));
 		});
 		
@@ -136,6 +145,22 @@ public class GestionAlumnos {
 
 	public void printAllAlumnos() {
 		this.alumnos.forEach(alumno-> System.out.println(alumno.toString()));
+	}
+
+	public Alumno getAlumno(StringBuilder codigoAlumno) {
+		for (Alumno alumno : alumnos) {
+			if(alumno.getCodigo().equals(codigoAlumno))
+				return alumno;
+		}
+		return null;
+	}
+
+	public void imprimirAlumnos() {
+		System.out.println("  Codigo\t\tNombre\t\tNota Media");
+		for (Alumno alumno : alumnos) {
+			System.out.println(alumno.getCodigo()+" - "+alumno.getNombre()+" - "+alumno.getNotaMedia());
+		}
+		
 	}
 	
 
