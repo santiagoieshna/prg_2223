@@ -149,7 +149,7 @@ public class GestionAlumnos {
 
 	public Alumno getAlumno(StringBuilder codigoAlumno) {
 		for (Alumno alumno : alumnos) {
-			if(alumno.getCodigo().equals(codigoAlumno))
+			if(alumno.getCodigo().equals(codigoAlumno.toString()))
 				return alumno;
 		}
 		return null;

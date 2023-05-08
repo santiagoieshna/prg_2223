@@ -24,9 +24,9 @@ public class APP {
 
 			switch (opcion) {
 			case 1: {
-//				insertCodigo( codigoAlumno);
 //				System.out.println(gest.getAlumno(codigoAlumno).notasToString());
-				codigoAlumno.append("9457570");
+//				codigoAlumno.append("9457570");
+				insertCodigo( codigoAlumno);
 				alumno = buscarAlumno(gest, codigoAlumno);
 				System.out.println(alumno.notasToString());
 				break;
