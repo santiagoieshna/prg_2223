@@ -31,7 +31,10 @@ public class APP_Ej3 {
 			System.out.println(okey);
 			gest.showAllProdcutos();
 			okey = gest.addProductos(nuevoProducto);
-			System.out.println(okey);
+			System.out.println("AddProducto: "+okey);
+			okey =gest.deleteProducto(nuevoProducto);
+			System.out.println("Delete Producto: "+okey);
+			gest.updatePriceSell();
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -42,7 +45,7 @@ public class APP_Ej3 {
 
 	public static Producto crearProducto() {
 		System.out.println("codigo");
-		StringBuilder codigoProducto=new StringBuilder("9_9171");
+		StringBuilder codigoProducto=new StringBuilder("9_9118");
 		StringBuilder nombreProducto=new StringBuilder("Prueba Producto");
 		StringBuilder cateogriaProducto=new StringBuilder("Motorcycles");
 		StringBuilder escala=new StringBuilder("escalita");

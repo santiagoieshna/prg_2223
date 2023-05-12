@@ -15,6 +15,7 @@ public interface Gestionable {
 	public Producto getProducto(StringBuilder id_producto);
 	public boolean deleteProducto(Producto producto);
 	public boolean updatePriceSell();
+	public boolean updatePriceSellFacil();
 	public boolean updatePriceSell(Float porcentje);
 	public boolean vaciarLista();
 	

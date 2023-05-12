@@ -6,11 +6,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 public class GestionProductos implements Gestionable{
-	private Set<Producto> productos;
+	private HashSet<Producto> productos;
 	private Connection conexion;
 	private Statement st;
 	
@@ -133,16 +134,56 @@ public class GestionProductos implements Gestionable{
 
 	@Override
 	public boolean deleteProducto(Producto producto) {
-//		for (Producto producto : productos) {
-//			
-//		}
-		return false;
+		int resp=0;
+		Iterator<Producto> iterator= productos.iterator();
+		while(iterator.hasNext()) {
+			Producto productoActual = iterator.next();
+			if(producto.getCodigoProducto().equals(productoActual.getCodigoProducto())) {
+				try {
+				resp= st.executeUpdate("DELETE from productos where codigoProducto ='"+producto.getCodigoProducto()+"'");
+				if(resp!=0) {
+					iterator.remove();
+				}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return resp!=0;
 	}
 
 	@Override
 	public boolean updatePriceSell() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		
+		boolean resp = true;
+		for (Producto producto : productos) {
+			producto.setPrecioVenta((float) (producto.getPrecioVenta()*(1+0.05)));
+			String query="UPDATE productos SET precioVenta = ("+producto.getPrecioVenta().toString()+") Where codigoProducto ='"
+			+producto.getCodigoProducto().toString()+"'";
+			
+	//		String query = "Insert into productos (codigoProducto,nombreProducto, categoriaProducto,escala,"
+	//				+ "vendedor,descripcion,unidadesStock,precioCompra,precioVenta) values ('999911','Licuadora' ,'Motorcycles', 'escaladora','Angel Acedo Requejo',"
+	//				+"'descripcion prueba', 123, 12.45, 13.45)";
+			if(resp) {
+				int rs;
+				try {
+					rs = st.executeUpdate(query);
+					
+					resp= rs!=0 ;
+					
+				} catch (SQLException e) {
+					resp=false;
+					e.printStackTrace();
+				}catch (Exception e) {
+					resp=false;
+					e.printStackTrace();
+				}
+			}
+		}
+		return resp;
 	}
 
 	@Override
@@ -163,6 +204,17 @@ public class GestionProductos implements Gestionable{
 	public Producto addProductos() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public boolean updatePriceSellFacil() {
+		int resp;
+		try {
+			resp = st.executeUpdate("UPDATE productos SET precioVenta= (precioVenta*(1+0.05))");
+		} catch (SQLException e) {
+			resp=0;
+			e.printStackTrace();
+		}
+		return resp!=0;
 	}
 	
 	
