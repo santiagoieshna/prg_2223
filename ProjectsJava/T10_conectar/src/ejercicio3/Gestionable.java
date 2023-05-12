@@ -10,13 +10,13 @@ public interface Gestionable {
 	public boolean addProductos(Producto producto);
 	public Producto addProductos();
 	public void showProducto(Producto producto);
-	public void showProducto(StringBuilder id_producto);
+	public void showProducto(String id_producto);
 	public void showAllProdcutos();
-	public Producto getProducto(StringBuilder id_producto);
+	public Producto getProducto(String id_producto);
 	public boolean deleteProducto(Producto producto);
 	public boolean updatePriceSell();
 	public boolean updatePriceSellFacil();
-	public boolean updatePriceSell(Float porcentje);
+	public boolean updatePriceSell(Float porcentaje);
 	public boolean vaciarLista();
 	
 }

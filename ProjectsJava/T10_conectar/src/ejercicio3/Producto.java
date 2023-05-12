@@ -3,7 +3,7 @@ package ejercicio3;
 import java.util.Objects;
 
 public class Producto {
-	private StringBuilder codigoProducto;
+	private String codigoProducto;
 	private StringBuilder nombreProducto;
 	private StringBuilder cateogriaProducto;
 	private StringBuilder escala;
@@ -16,11 +16,11 @@ public class Producto {
 	public Producto() {
 		super();	
 	}
-	public Producto(StringBuilder codigoProducto) {
+	public Producto(String codigoProducto) {
 		super();
 		this.codigoProducto = codigoProducto;
 	}
-	public Producto(StringBuilder codigoProducto, StringBuilder nombreProducto, StringBuilder cateogriaProducto,
+	public Producto(String codigoProducto, StringBuilder nombreProducto, StringBuilder cateogriaProducto,
 			StringBuilder escala, StringBuilder vendedor, StringBuilder descripcion, Short unidadesStock,
 			Float precioCompra, Float precioVenta) {
 		super();
@@ -38,7 +38,7 @@ public class Producto {
 	/*
 	 * categoriaProducto = NULL
 	 */
-	public Producto(StringBuilder codigoProducto, StringBuilder nombreProducto,
+	public Producto(String codigoProducto, StringBuilder nombreProducto,
 			StringBuilder escala, StringBuilder vendedor, StringBuilder descripcion, Short unidadesStock,
 			Float precioCompra, Float precioVenta) {
 		super();
@@ -174,7 +174,7 @@ public class Producto {
 
 
 
-	public StringBuilder getCodigoProducto() {
+	public String getCodigoProducto() {
 		return codigoProducto;
 	}
 	

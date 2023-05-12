@@ -1,17 +1,16 @@
 package ejercicio3;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 public class GestionProductos implements Gestionable{
-	private HashSet<Producto> productos;
+	private Set<Producto> productos;
 	private Connection conexion;
 	private Statement st;
 	
@@ -30,6 +29,10 @@ public class GestionProductos implements Gestionable{
 		}
 		cargarProductos();
 	}
+	
+	public boolean isEmpty() {
+		return productos.isEmpty();
+	}
 
 	@Override
 	public void setConexion(Connection conexion) throws SQLException {
@@ -40,6 +43,7 @@ public class GestionProductos implements Gestionable{
 
 	@Override
 	public boolean cargarProductos() {
+		this.productos=new HashSet<>();//Reseteamos HasSet
 		StringBuilder query = new StringBuilder();
 		query.append("SELECT * FROM productos");
 		try {
@@ -47,7 +51,7 @@ public class GestionProductos implements Gestionable{
 			
 			while(rs.next()) {
 				//Cargo un producto
-				Producto p = new Producto(new StringBuilder(rs.getString("codigoProducto")));
+				Producto p = new Producto(rs.getString("codigoProducto"));
 				p.setNombreProducto(new StringBuilder(rs.getString("nombreProducto")));
 				p.setCateogriaProducto(new StringBuilder(rs.getString("categoriaProducto")));
 				p.setEscala(new StringBuilder(rs.getString("escala")));
@@ -73,7 +77,7 @@ public class GestionProductos implements Gestionable{
 	@Override
 	public boolean addProductos(Producto producto) {
 		System.out.println(productos.contains(producto)); 
-		System.out.println(producto.toString()); 
+//		System.out.println(producto.toString()); 
 		boolean resp = true;
 		
 		String query="INSERT INTO productos (codigoProducto,nombreProducto, categoriaProducto,escala,"
@@ -96,9 +100,11 @@ public class GestionProductos implements Gestionable{
 				
 			} catch (SQLException e) {
 				resp=false;
+				System.out.println("Error de SQL en AddProducto");
 				e.printStackTrace();
 			}catch (Exception e) {
 				resp=false;
+				System.out.println("Error INESPERADO en AddProducto");
 				e.printStackTrace();
 			}
 		}
@@ -111,7 +117,7 @@ public class GestionProductos implements Gestionable{
 	}
 
 	@Override
-	public void showProducto(StringBuilder id_producto) {
+	public void showProducto(String id_producto) {
 		System.out.println(getProducto(id_producto).toString());
 	}
 
@@ -127,8 +133,19 @@ public class GestionProductos implements Gestionable{
 	}
 
 	@Override
-	public Producto getProducto(StringBuilder id_producto) {
-		
+	public Producto getProducto(String id_producto) {
+//		Iterator<Producto> it = productos.iterator();
+//		while(it.hasNext()) {
+//			Producto producto= it.next();
+//			if(producto.getCodigoProducto().equals(id_producto)) {
+//				return producto;
+//			}
+//		}
+		for (Producto producto : productos) {
+			if(producto.getCodigoProducto().equals(id_producto)) {
+				return producto;
+			}
+		}
 		return null;
 	}
 
@@ -160,7 +177,9 @@ public class GestionProductos implements Gestionable{
 		
 		boolean resp = true;
 		for (Producto producto : productos) {
+			//Seteamos el nuevo precio
 			producto.setPrecioVenta((float) (producto.getPrecioVenta()*(1+0.05)));
+			//Creamos la consulta
 			String query="UPDATE productos SET precioVenta = ("+producto.getPrecioVenta().toString()+") Where codigoProducto ='"
 			+producto.getCodigoProducto().toString()+"'";
 			
@@ -170,6 +189,7 @@ public class GestionProductos implements Gestionable{
 			if(resp) {
 				int rs;
 				try {
+					// Ejecutamos el update, rs es una int que dara != 0 si salio bien
 					rs = st.executeUpdate(query);
 					
 					resp= rs!=0 ;
@@ -187,9 +207,25 @@ public class GestionProductos implements Gestionable{
 	}
 
 	@Override
-	public boolean updatePriceSell(Float porcentje) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updatePriceSell(Float porcentaje) {
+		// Con prepareStatement
+		PreparedStatement pS;
+		int respuesta=0;
+		String query="UPDATE productos SET precioVenta = ?";
+		porcentaje /= 100;
+
+		try {
+			pS = this.conexion.prepareStatement(query);
+			//Add values
+			pS.setString(1, "(precioVenta*(1+"+porcentaje.toString()+"))");
+			//Obtenemos T o F si se modificó.
+			respuesta= pS.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return respuesta!=0;
 	}
 	@Override
 	public boolean vaciarLista() {
@@ -215,6 +251,19 @@ public class GestionProductos implements Gestionable{
 			e.printStackTrace();
 		}
 		return resp!=0;
+	}
+	public void desconectar() {
+		try {
+			this.conexion.close();
+			System.out.println("Bd desconectada");
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}catch (Exception e) {
+			System.out.println("No se pudo desconectar la bd");
+			e.printStackTrace();
+		}
+		
 	}
 	
 	
