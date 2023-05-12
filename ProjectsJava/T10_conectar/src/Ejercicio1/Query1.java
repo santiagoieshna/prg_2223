@@ -8,21 +8,21 @@ import java.sql.Statement;
 import java.util.Properties;
 import java.util.Scanner;
 
-import com.mysql.cj.protocol.Resultset;
+
 
 import conector.ConectarBD;
 
 public class Query1 {
 	/*
-	 * Diseña un proyecto Java que obtenga un listado de clientes de una localidad
-	 * que será pasada como parámetro. Debes mostrar las columnas número de cliente,
-	 * nombre, teléfono y ciudad.
+	 * Diseï¿½a un proyecto Java que obtenga un listado de clientes de una localidad
+	 * que serï¿½ pasada como parï¿½metro. Debes mostrar las columnas nï¿½mero de cliente,
+	 * nombre, telï¿½fono y ciudad.
 	 * 
 	 */
 	public static void main(String[] args) {
 		String url,ciudad;
 		Properties propiedades;
-		Connection conexion;
+		Connection conexion = null;
 		Statement st;
 		ResultSet rs;
 		ResultSetMetaData rsmd;
@@ -53,6 +53,15 @@ public class Query1 {
 			e.printStackTrace();
 		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				conexion.close();
+				if(conexion!=null && conexion.isClosed()) {
+					System.out.println("***Desconectado correctamente***");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}
