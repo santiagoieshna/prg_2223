@@ -8,6 +8,7 @@ public interface Gestionable {
 	public void setConexion(Connection conexion) throws SQLException;
 	public boolean cargarProductos();
 	public boolean addProductos(Producto producto);
+	public Producto addProductos();
 	public void showProducto(Producto producto);
 	public void showProducto(StringBuilder id_producto);
 	public void showAllProdcutos();

@@ -71,8 +71,30 @@ public class GestionProductos implements Gestionable{
 
 	@Override
 	public boolean addProductos(Producto producto) {
-//		produc
-		return false;
+		boolean resp = productos.contains(producto);
+		String query="INSERT INTO productos (codigoProducto,nombreProducto, categoriaProducto,escala"
+				+" vendedor,descripcion,unidadesStock,precioCompra,precioVenta) VALUES ('"
+				+producto.getCodigoProducto().toString()+"','"+producto.getNombreProducto().toString()
+				+"','"+producto.getCateogriaProducto().toString()+"','"+producto.getEscala().toString()+"','"
+				+producto.getVendedor()+"','"+producto.getDescripcion().toString()+"','"+producto
+				.getUnidadesStock().toString()+"','"+producto.getPrecioCompra().toString()+"','"
+				+producto.getPrecioVenta().toString()+"')";
+		if(resp) {
+			int rs;
+			try {
+				rs = st.executeUpdate(query);
+				
+				resp= (rs!=0 && productos.add(producto));
+				
+			} catch (SQLException e) {
+				resp=false;
+				e.printStackTrace();
+			}catch (Exception e) {
+				resp=false;
+				e.printStackTrace();
+			}
+		}
+		return resp;
 	}
 
 	@Override
@@ -127,6 +149,11 @@ public class GestionProductos implements Gestionable{
 		}catch (Exception e) {
 			return false;			
 		}
+	}
+	@Override
+	public Producto addProductos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
