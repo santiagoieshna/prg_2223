@@ -42,9 +42,9 @@ public class APP_Ej3 {
 
 	public static Producto crearProducto() {
 		System.out.println("codigo");
-		StringBuilder codigoProducto=new StringBuilder("9991");
+		StringBuilder codigoProducto=new StringBuilder("9_9171");
 		StringBuilder nombreProducto=new StringBuilder("Prueba Producto");
-		StringBuilder cateogriaProducto=new StringBuilder("Prueba001");
+		StringBuilder cateogriaProducto=new StringBuilder("Motorcycles");
 		StringBuilder escala=new StringBuilder("escalita");
 		StringBuilder vendedor=new StringBuilder("Antonio Sanchez");
 		StringBuilder descripcion=new StringBuilder("Describir");

@@ -71,14 +71,21 @@ public class GestionProductos implements Gestionable{
 
 	@Override
 	public boolean addProductos(Producto producto) {
-		boolean resp = productos.contains(producto);
-		String query="INSERT INTO productos (codigoProducto,nombreProducto, categoriaProducto,escala"
+		System.out.println(productos.contains(producto)); 
+		System.out.println(producto.toString()); 
+		boolean resp = true;
+		
+		String query="INSERT INTO productos (codigoProducto,nombreProducto, categoriaProducto,escala,"
 				+" vendedor,descripcion,unidadesStock,precioCompra,precioVenta) VALUES ('"
 				+producto.getCodigoProducto().toString()+"','"+producto.getNombreProducto().toString()
 				+"','"+producto.getCateogriaProducto().toString()+"','"+producto.getEscala().toString()+"','"
-				+producto.getVendedor()+"','"+producto.getDescripcion().toString()+"','"+producto
-				.getUnidadesStock().toString()+"','"+producto.getPrecioCompra().toString()+"','"
-				+producto.getPrecioVenta().toString()+"')";
+				+producto.getVendedor().toString()+"','"+producto.getDescripcion().toString()+"',"+producto
+				.getUnidadesStock().toString()+","+producto.getPrecioCompra().toString()+","
+				+producto.getPrecioVenta().toString()+")";
+
+//		String query = "Insert into productos (codigoProducto,nombreProducto, categoriaProducto,escala,"
+//				+ "vendedor,descripcion,unidadesStock,precioCompra,precioVenta) values ('999911','Licuadora' ,'Motorcycles', 'escaladora','Angel Acedo Requejo',"
+//				+"'descripcion prueba', 123, 12.45, 13.45)";
 		if(resp) {
 			int rs;
 			try {
@@ -126,7 +133,9 @@ public class GestionProductos implements Gestionable{
 
 	@Override
 	public boolean deleteProducto(Producto producto) {
-		// TODO Auto-generated method stub
+//		for (Producto producto : productos) {
+//			
+//		}
 		return false;
 	}
 

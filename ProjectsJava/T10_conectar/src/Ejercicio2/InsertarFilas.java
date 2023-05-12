@@ -10,11 +10,12 @@ import java.util.Properties;
 import java.util.Scanner;
 
 import conector.ConectarBD;
+import util.UtilesBD;
 
 public class InsertarFilas {
 	/*
-	 * Diseña un proyecto Java que permita insertar filas en la tabla
-	 * “categoriasproductos”. Los datos se solicitarán al usuario.
+	 * DiseÃ±a un proyecto Java que permita insertar filas en la tabla
+	 * â€œcategoriasproductosâ€�. Los datos se solicitarÃ¡n al usuario.
 	 * 
 	 */
 	public static void main(String[] args) {
@@ -41,7 +42,7 @@ public class InsertarFilas {
 			System.out.println(numero);
 			respuesta= ejecutorSentencia.executeQuery("Select * from categoriasproductos where categoria ='"+categoria+"'");
 			metaData = respuesta.getMetaData();
-			ConectarBD.printRes(respuesta, metaData);
+			UtilesBD.printRes(respuesta, metaData);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

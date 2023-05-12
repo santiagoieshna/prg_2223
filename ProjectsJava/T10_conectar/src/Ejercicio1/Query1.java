@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 
 import conector.ConectarBD;
+import util.UtilesBD;
 
 public class Query1 {
 	/*
@@ -47,7 +48,7 @@ public class Query1 {
 		rs = st.executeQuery("SELECT numerocliente, nombre, telefono, ciudad FROM clientes WHERE ciudad ='"+ciudad+"'");
 		rsmd = rs.getMetaData();
 		
-		ConectarBD.printRes(rs, rsmd);
+		UtilesBD.printRes(rs, rsmd);
 		
 		}catch (SQLException e) {
 			e.printStackTrace();
