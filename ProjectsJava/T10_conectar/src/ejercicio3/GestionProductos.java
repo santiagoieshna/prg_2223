@@ -115,7 +115,7 @@ public class GestionProductos implements Gestionable{
 	public void showProducto(Producto producto) {
 		System.out.println(producto.toString());
 	}
-
+ 
 	@Override
 	public void showProducto(String id_producto) {
 		System.out.println(getProducto(id_producto).toString());
@@ -213,11 +213,13 @@ public class GestionProductos implements Gestionable{
 		int respuesta=0;
 		String query="UPDATE productos SET precioVenta = ?";
 		porcentaje /= 100;
+		String nuevoPorcentaje= "(precioVenta*(1+"+porcentaje.toString()+"))";
+		//Pasar por producto tutto
 
 		try {
 			pS = this.conexion.prepareStatement(query);
 			//Add values
-			pS.setString(1, "(precioVenta*(1+"+porcentaje.toString()+"))");
+			pS.setString(1, nuevoPorcentaje);
 			//Obtenemos T o F si se modificó.
 			respuesta= pS.executeUpdate();
 		} catch (SQLException e) {
