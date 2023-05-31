@@ -14,7 +14,7 @@ public class GestionEmpleados implements GestionEmpleadable {
 	private Statement st;
 	private PreparedStatement pSt;
 	
-	public GestionEmpleados( Connection conexion, Statement st) {
+	public GestionEmpleados( Connection conexion) {
 		super();
 		this.empleados = new ArrayList<>();
 		this.conexion = conexion;
@@ -119,6 +119,31 @@ public class GestionEmpleados implements GestionEmpleadable {
 			}
 		}
 		return null;
+	}
+
+
+	@Override
+	public void printAllEmpleados() {
+		
+		for (Empleado empleado : empleados) {
+			System.out.println(empleado.toString());
+		}
+		
+	}
+
+
+	public void printNames() {
+		for (Empleado empleado : empleados) {
+			System.out.println(empleado.getNombre()+" "+empleado.getApellido());
+		}
+		
+	}
+	
+	public boolean createEmpleado(Empleado employer) {
+		
+		
+		return false;
+		
 	}
 
 	

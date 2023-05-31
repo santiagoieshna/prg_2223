@@ -13,5 +13,7 @@ public interface GestionEmpleadable {
 	public boolean saveEmpleadosDept();
 	public boolean cargarEmpleados();
 	public Empleado getEmpleado(String idEmpleado);
+	public void printAllEmpleados();
+	public boolean createEmpleado(Empleado employer);
 	
 }

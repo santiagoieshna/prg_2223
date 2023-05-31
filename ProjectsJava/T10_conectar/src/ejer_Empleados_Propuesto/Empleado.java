@@ -12,11 +12,10 @@ public class Empleado {
 	private String jefedirecto;
 	private String puestoTrabajo;
 
-	public Empleado() {
 
-	}
 	public Empleado(String numeroEmpleado) {
 		this.numeroEmpleado = numeroEmpleado;
+		
 	}
 
 	public Empleado(String numeroEmpleado, String apellido, String nombre, String extension, String email,

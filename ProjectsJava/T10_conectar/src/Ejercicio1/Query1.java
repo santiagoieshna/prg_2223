@@ -29,7 +29,7 @@ public class Query1 {
 		ResultSetMetaData rsmd;
 		Scanner consola = new Scanner(System.in);
 		
-		url = "jdbc:mysql://localhost/classicmodels";
+		url = "jdbc:mysql://localhost:3306/classicmodels";
 		
 		propiedades= new  Properties();
 		propiedades.put("user", "santiago");
@@ -47,9 +47,8 @@ public class Query1 {
 		// Query
 		rs = st.executeQuery("SELECT numerocliente, nombre, telefono, ciudad FROM clientes WHERE ciudad ='"+ciudad+"'");
 		rsmd = rs.getMetaData();
-		
 		UtilesBD.printRes(rs, rsmd);
-		
+				
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}catch(Exception e) {
