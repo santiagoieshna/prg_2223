@@ -1,5 +1,7 @@
 package ejer_Empleados_Propuesto;
 
+import java.sql.SQLException;
+
 public interface GestionEmpleadable {
 	public boolean updateGmail(String newGmail);
 	public boolean deleteEmpleado();
@@ -14,6 +16,6 @@ public interface GestionEmpleadable {
 	public boolean cargarEmpleados();
 	public Empleado getEmpleado(String idEmpleado);
 	public void printAllEmpleados();
-	public boolean createEmpleado(Empleado employer);
+	public boolean createEmpleado();
 	
 }

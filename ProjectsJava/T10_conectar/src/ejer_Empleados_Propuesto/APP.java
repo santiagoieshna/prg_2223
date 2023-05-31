@@ -33,18 +33,20 @@ public class APP {
 				menuOpciones();
 				opcionUsuario= sc.nextInt();
 				Empleado employer = null;
+				
+				// MENU
 				switch (opcionUsuario) {
 				case 1: {
 					gest.printAllEmpleados();
 					break;
 				}
 				case 2: {
-					employer= new Empleado(pedirCodigo());
 					
-					if (gest.createEmpleado(employer)){
+					
+					if (gest.createEmpleado()){
 						System.out.println("Dado de alta correctamente");
 					}else {
-						System.out.println("No se pude dar de Alta");
+						System.out.println("No se pudo dar de Alta");
 					}
 					break;
 				}
@@ -61,13 +63,17 @@ public class APP {
 					break;
 				}
 				case 6: {
-
+					gest.cargarEmpleados();
+					break;
+				}
+				case 7: {
+					System.out.println("Saliendo del sistema..");
 					break;
 				}
 				default:
 					System.out.println("Animo!");
 				}
-			} while (opcionUsuario != 6);
+			} while (opcionUsuario != 7);
 			
 
 		} catch (SQLException e) {
@@ -79,13 +85,8 @@ public class APP {
 
 	static public void menuOpciones() {
 		System.out.println("\n***Menu****\n" + "1) Ver empleados\n" + "2) Dar Alta Empleados\n" + "3) Eliminar empleado\n"
-				+ "4) Mostrar nombres\n" + "5) nombre departamento\n" + "6) Salir");
+				+ "4) Mostrar nombres\n" + "5) nombre departamento\n" + "6) Cargar Empleados de BD"+"7) Salir");
 	}
-	
-	static public String pedirCodigo() {
-		System.out.print("Inserte el codigo de empleado: ");
-		Scanner sc = new Scanner(System.in);
-		return sc.next();
-	}
+
 	
 }
