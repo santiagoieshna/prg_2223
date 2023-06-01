@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import com.mysql.cj.Query;
+
 /**
  * 
  * @author xtalo
@@ -56,6 +56,7 @@ public class GestionEmpleados implements GestionEmpleadable {
 		boolean respuesta = false;
 		String query = "Update empleados SET email=? where numeroempleado=?";
 		try {
+			
 			sentencia = getConexion().prepareStatement(query);
 			sentencia.setString(1, newGmail);
 			sentencia.setString(2, empleado.getNumeroEmpleado());
