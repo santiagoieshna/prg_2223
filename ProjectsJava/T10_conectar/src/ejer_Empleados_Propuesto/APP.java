@@ -16,6 +16,7 @@ public class APP {
 		Empleado empleado;
 		GestionEmpleados gest;
 		int opcionUsuario = 10;
+		int salida = 8;
 		// Credenciales
 		url = "jdbc:mysql://localhost/classicmodels";
 		user = "santiago";
@@ -31,9 +32,9 @@ public class APP {
 
 			do {
 				menuOpciones();
-				opcionUsuario= sc.nextInt();
+				opcionUsuario = sc.nextInt();
 				Empleado employer = null;
-				
+
 				// MENU
 				switch (opcionUsuario) {
 				case 1: {
@@ -41,17 +42,22 @@ public class APP {
 					break;
 				}
 				case 2: {
-					
-					
-					if (gest.createEmpleado()){
+
+					if (gest.createEmpleado()) {
 						System.out.println("Dado de alta correctamente");
-					}else {
+					} else {
 						System.out.println("No se pudo dar de Alta");
 					}
 					break;
 				}
 				case 3: {
-
+					System.out.println("\n----Eliminar empleado----");
+					System.out.println("Iserte el codigo empleado :");
+					if (gest.deleteEmpleado(sc.next())) {
+						System.out.println("Empleado eliminado con existo");
+					} else {
+						System.out.println("No se pudo eliminar el Empleado");
+					}
 					break;
 				}
 				case 4: {
@@ -59,7 +65,9 @@ public class APP {
 					break;
 				}
 				case 5: {
-
+					System.out.print("Inserte el Nº de Departamento: ");
+					String departamento= sc.next();
+					gest.saveEmpleadosDept(departamento);
 					break;
 				}
 				case 6: {
@@ -67,14 +75,36 @@ public class APP {
 					break;
 				}
 				case 7: {
+					System.out.println("\n----Actualizar Email----");
+					System.out.println("Iserte el codigo Empleado: ");
+					
+					try {
+						empleado = gest.getEmpleado(sc.next());
+						System.out.println(empleado.toString());
+						System.out.print("Inserte el nuevo Email: ");
+						
+						if (gest.updateGmail(sc.next(), empleado)) {
+							System.out.println("Email actualizado con existo");
+						} else {
+							System.out.println("No se pudo actualizar el Email");
+						}
+						
+					} catch (NullPointerException e) {
+						System.out.println("El empleado con ese codigo no existe");
+					} catch (Exception e) {
+						System.out.println("Error no contenplado");
+						e.printStackTrace();
+					}
+					break;
+				}
+				case 8: {
 					System.out.println("Saliendo del sistema..");
 					break;
 				}
 				default:
 					System.out.println("Animo!");
 				}
-			} while (opcionUsuario != 7);
-			
+			} while (opcionUsuario != salida);
 
 		} catch (SQLException e) {
 
@@ -84,9 +114,9 @@ public class APP {
 	}
 
 	static public void menuOpciones() {
-		System.out.println("\n***Menu****\n" + "1) Ver empleados\n" + "2) Dar Alta Empleados\n" + "3) Eliminar empleado\n"
-				+ "4) Mostrar nombres\n" + "5) nombre departamento\n" + "6) Cargar Empleados de BD"+"7) Salir");
+		System.out.println("\n***Menu****\n" + "1) Ver empleados\n" + "2) Dar Alta Empleados\n"
+				+ "3) Eliminar empleado\n" + "4) Mostrar nombres\n" + "5) nombre departamento\n"
+				+ "6) Cargar Empleados de BD\n" + "7) Actualizar email\n" + "8) Salir");
 	}
 
-	
 }

@@ -1,11 +1,15 @@
 package ejer_Empleados_Propuesto;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,8 +40,8 @@ public class GestionEmpleados implements GestionEmpleadable {
 	public GestionEmpleados( Connection conexion) {
 		super();
 		this.empleados = new ArrayList<>();
-		this.conexion = conexion;
 		try {
+			this.conexion = conexion;
 			this.st = conexion.createStatement();
 			cargarEmpleados();
 			
@@ -48,14 +52,81 @@ public class GestionEmpleados implements GestionEmpleadable {
 	
 
 	@Override
-	public boolean updateGmail(String newGmail) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateGmail(String newGmail, Empleado empleado) {
+		boolean respuesta = false;
+		String query = "Update empleados SET email=? where numeroempleado=?";
+		try {
+			sentencia = getConexion().prepareStatement(query);
+			sentencia.setString(1, newGmail);
+			sentencia.setString(2, empleado.getNumeroEmpleado());
+			sentencia.executeUpdate();
+			sentencia.close();
+			respuesta=true;
+			cargarEmpleados();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("\nError no contemplado en actualizar Email");
+		}
+		return respuesta;
 	}
 
 	@Override
-	public boolean deleteEmpleado() {
-		// TODO Auto-generated method stub
+	public boolean deleteEmpleado(String id) {
+		boolean respuesta = false;
+		Empleado empleado = getEmpleado(id);
+		if(empleado != null) {
+			if(confirmarEliminarEmpleado(empleado)) {
+				if(deleteItemByID(empleado)) {
+					respuesta = true;
+				}
+			}
+		}
+		return respuesta;
+	}
+
+
+	private boolean deleteItemByID(Empleado empleado) {
+		boolean respuesta = false;
+		String query = "Delete from empleados where numeroEmpleado=?";
+		try {
+			sentencia = getConexion().prepareStatement(query);
+			sentencia.setString(1, empleado.getNumeroEmpleado());
+			sentencia.executeUpdate();
+			sentencia.close();
+			respuesta = true;
+			EliminarEmpleadoList(empleado);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return respuesta;
+	}
+
+
+	private void EliminarEmpleadoList(Empleado empleado) {
+		Iterator empleadosIterator= this.empleados.iterator();
+		while(empleadosIterator.hasNext()) {
+			Empleado empleadoActual = (Empleado) empleadosIterator.next();
+			if (empleadoActual.getNumeroEmpleado().equals(empleado.getNumeroEmpleado())) {
+				empleadosIterator.remove();
+			}
+		}
+		
+	}
+
+
+	private boolean confirmarEliminarEmpleado(Empleado empleado) {
+		String eliminar="";
+		System.out.println("Datos de "+empleado.getNumeroEmpleado());
+		System.out.println(empleado.toString());
+		System.out.println("\nQuieres eliminar este empleado (s/n)");
+		eliminar = new Scanner(System.in).next();
+		if (eliminar.equalsIgnoreCase("s") || eliminar.equalsIgnoreCase("si")) {
+			return true;
+		}
 		return false;
 	}
 
@@ -66,10 +137,70 @@ public class GestionEmpleados implements GestionEmpleadable {
 	}
 
 	@Override
-	public boolean saveEmpleadosDept() {
-		// TODO Auto-generated method stub
+	public boolean saveEmpleadosDept(String numDepartamento) {
+		boolean respuesta = false;
+		List<Empleado> EmpleadosDepartamento = empleadosPorDepartamento(numDepartamento);
+		if(crearFicheroDepartamento(EmpleadosDepartamento, numDepartamento)) {
+			respuesta=true;
+		}
+		
+		return respuesta;
+	}
+
+	private boolean crearFicheroDepartamento(List<Empleado> empleadosDepartamento, String numDepartamento) {
+		boolean respuesta = false;
+		String nombreArchivo = "res/Departamento"+numDepartamento+".txt";
+		try {
+			BufferedWriter escritor = new BufferedWriter(new FileWriter(nombreArchivo));
+			
+			for (Empleado empleado : empleadosDepartamento) {
+				StringBuilder formatEmpleado = new StringBuilder();
+				formatEmpleado.append(empleado.getNumeroEmpleado()+":");
+				formatEmpleado.append(empleado.getApellido()+":");
+				formatEmpleado.append(empleado.getNombre()+":");
+				formatEmpleado.append(empleado.getExtension()+":");
+				formatEmpleado.append(empleado.getEmail()+":");
+				formatEmpleado.append(empleado.getCodigoOficina()+":");
+				formatEmpleado.append(empleado.getJefedirecto()+":");
+				formatEmpleado.append(empleado.getPuestoTrabajo()+";");
+				escritor.write(formatEmpleado.toString());
+				escritor.newLine();
+			}
+			escritor.close();
+			respuesta = true;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
+
+
+	private List<Empleado> empleadosPorDepartamento(String numDepartamento) {
+		List<Empleado> EmpleadosDepartamento = new ArrayList<>();
+		String query = "SELECT * FROM empleados WHERE codigoOficina=?";
+		try {
+			sentencia = getConexion().prepareStatement(query);
+			sentencia.setString(1, numDepartamento);
+			ResultSet rs = sentencia.executeQuery();
+			while(rs.next()) {
+				Empleado empleado = new Empleado(rs.getString("numeroEmpleado"));
+				empleado.setApellido(rs.getString("apellido"));
+				empleado.setNombre(rs.getString("nombre"));
+				empleado.setExtension(rs.getString("extension"));
+				empleado.setEmail(rs.getString("email"));
+				empleado.setCodigoOficina(rs.getString("codigoOficina"));
+				empleado.setJefedirecto(rs.getString("jefeDirecto"));
+				empleado.setPuestoTrabajo(rs.getString("puestoTrabajo"));
+				//Aniadimos a la Lista
+				EmpleadosDepartamento.add(empleado);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return EmpleadosDepartamento;
+	}
+
 
 	@Override
 	public boolean cargarEmpleados() {
@@ -100,7 +231,6 @@ public class GestionEmpleados implements GestionEmpleadable {
 			respuesta=false;			
 			e.printStackTrace();
 		}
-		
 		return respuesta;
 	}
 	
@@ -121,13 +251,8 @@ public class GestionEmpleados implements GestionEmpleadable {
 	}
 
 
-	public PreparedStatement getpSt() {
+	public PreparedStatement getSentencia() {
 		return sentencia;
-	}
-
-
-	public List<Empleado> getEmpleados() {
-		return empleados;
 	}
 
 
@@ -177,7 +302,6 @@ public class GestionEmpleados implements GestionEmpleadable {
 			sentencia.close();
 			respuesta=true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return respuesta;
@@ -198,6 +322,7 @@ public class GestionEmpleados implements GestionEmpleadable {
 		System.out.print("Inserte el codigo de oficina: ");
 		empleado.setCodigoOficina(sc.next());
 		System.out.print("Inserte el puesto de trabajo: ");
+		sc.nextLine();
 		empleado.setPuestoTrabajo(sc.nextLine());
 		System.out.print("Inserte el Email: ");
 		empleado.setEmail(sc.next());
