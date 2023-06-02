@@ -9,9 +9,12 @@ public class APP {
 	try {
 		
 		gest = new GestionProductos( Conexion.getConexion());
-//		gest.getProductoStorage().printProductos();
+		gest.getProductoStorage().printProductos();
 		gest.selectInventadaJiJiJaJaGallinaTuerta(50f, 150f);
 		gest.crearPdf();
+		
+		gest.pdfVersionDos();
+		
 	} catch (Exception e) {
 		System.out.println("No se pudo cargar los productos");
 		e.printStackTrace();
