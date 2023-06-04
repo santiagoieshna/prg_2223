@@ -1,5 +1,7 @@
 package model;
 
+import java.util.HashMap;
+
 public class Pedido {
 	private String numeroPedido;
 	private String fechaPedido;
@@ -7,7 +9,8 @@ public class Pedido {
 	private String estado;
 	private String comentarios;
 	private String numeroCliente;
-
+	private DetallePedido[] lineas;
+	
 	public Pedido() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -75,7 +78,16 @@ public class Pedido {
 	@Override
 	public String toString() {
 		return "Pedido [numeroPedido=" + numeroPedido + ", fechaPedido=" + fechaPedido + ", fechaEntrega="
-				+ fechaEntrega + ", estado=" + estado + ", comentarios=" + comentarios + ", numeroCliente="
+				+ fechaEntrega + ", estado=" + estado + ", numeroCliente="
 				+ numeroCliente + "]";
 	}
+
+	public DetallePedido[] getLineas() {
+		return lineas;
+	}
+
+	public void setLineas(DetallePedido[] lineas) {
+		this.lineas = lineas;
+	}
+
 }

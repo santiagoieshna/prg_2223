@@ -2,16 +2,18 @@ package controller;
 
 import java.util.ArrayList;
 
+import model.Cliente;
+
 public class GestionPedidoCliente {
 	private GestionClientes gestClientes;
-	private GestionPedidos gestPedidoss;
+	private GestionPedidos gestPedidos;
 	private GestionProductos gestProductos;
 	
 	public GestionPedidoCliente() {
 		super();
 		
 		gestClientes = new GestionClientes();
-		gestPedidoss= new GestionPedidos();
+		gestPedidos= new GestionPedidos();
 		gestProductos = new GestionProductos();
 		
 	}
@@ -23,6 +25,19 @@ public class GestionPedidoCliente {
 	
 	public void mostarTodosClientes() {
 		gestClientes.printTodosClientes();
+	}
+	
+	public void mostrarTodosPedidos() {
+		gestPedidos.printPedidos();
+	}
+	
+	public void mostrarLineasPedido(String idPedido) {
+		gestPedidos.printLineasPedidoByID(idPedido);
+	}
+
+	public void addCliente(Cliente cliente) {
+		gestClientes.guardarCliente(cliente);
+		
 	}
 	
 }
