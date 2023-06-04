@@ -1,0 +1,35 @@
+Ejercicio Inventado:
+ - BASE DATOS: classicmodels
+ 
+ Enunciado: Se quiere diseñar una aplicacion que por un menu se pueda visualizar:
+ 	CONSOLA:
+ 	
+ 	1) Todos los clientes.
+ 	
+ 	2) Todos los clientes de una ciudad (Pedir Ciudad por teclado).
+ 	
+ 	3) Agregar un cliente y que el pais exista ya en la BD (usa un Set para valdiar que existe.
+ 	
+ 	3) idcliente, Nombre Clientes , numero total de pedidos y el importe total de este. Esto se debera 
+ 	   guardar en un archivo 'ClientesPedidos.txt' de tal forma:
+ 	   Ej:
+ 	   
+ 	   id;nombre;numeroPedidos;Importe
+ 	   103;Atelier graphique;3;22314.36
+ 	   
+ 	   Nota: No hace falta usar la tabla producto para sacar el importe.
+ 	   
+ 	4) Ver Factura de pedido.
+ 	   Insertar el id de un Cliente, donde se visualizara por pantalla los id de todos los pedidos que tiene
+ 	   Elegir (Pedir por teclado su id) un pedido de un cliente y que se muestre una factura de este.
+ 	   EJ:
+ 	   		
+ 	     
+ 	   Nota: Este apartado tendra puntos extra si en vez de que se muestre por consola, se genera en un pdf
+ 	   
+ 	5)
+ 	
+ 	
+ 	
+ 	
+ 	

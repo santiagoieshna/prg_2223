@@ -1,0 +1,4 @@
+Ejercicio Inventado:
+ - BASE DATOS: classicmodels
+ 
+ Enunciado: Se quiere diseñar una aplicacion que 

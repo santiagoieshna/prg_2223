@@ -1,0 +1,22 @@
+use classicmodels;
+
+-- todos los paises existentes en cleintes
+select distinct pais from clientes;
+
+-- Numero de pedidos por cliente
+select c.numerocliente, count(p.numeroPedido) AS numeroPedidos from pedidos p,RIGHT JOIN clientes c ON c.numerocliente=p.numerocliente group by numerocliente;
+
+-- Importe de todos los pedidos de UN cliente
+ select p.numerocliente,sum(d.preciounidad*d.cantidadpedida) from detallespedidos d left join pedidos p on p.numeropedido=d.numeropedido  WHERE p.numerocliente=103;
+
+ -- Importe de todos los pedidos POR cleinte
+ select p.numerocliente,sum(d.preciounidad*d.cantidadpedida) from detallespedidos d left join pedidos p on p.numeropedido=d.numeropedido group by numerocliente;
+
+ -- Pedidos de un cliente
+ select p.numerocliente, d.numeropedido  from productos pro left join detallespedidos d on d.codigoproducto=pro.codigoproducto left join pedidos p on p.numeropedido=d.numeropedido  WHERE p.numerocliente=103 group by d.numeropedido;
+
+ -- Factura de un pedido
+ select pro.nombreproducto as Prodcuto, d.cantidadPedida as Cantidad, d.preciounidad as "Precio/Unidad"  from productos pro left join detallespedidos d on d.codigoproducto=pro.codigoproducto left join pedidos p on p.numeropedido=d.numeropedido  WHERE p.numerocliente=103 AND d.numeropedido=10123;
+
+-- Total de la Factura de un pedido
+ select SUM(d.cantidadPedida*d.preciounidad) AS Total  from productos pro left join detallespedidos d on d.codigoproducto=pro.codigoproducto left join pedidos p on p.numeropedido=d.numeropedido  WHERE p.numerocliente=103 AND d.numeropedido=10123;
