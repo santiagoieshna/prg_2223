@@ -121,8 +121,16 @@ public class GestionPedidoCliente {
 			celda = new PdfPCell(new Phrase("Cliente"));
 			celda.setColspan(6);
 			celda.setHorizontalAlignment(celda.ALIGN_CENTER);
-			
 			tabla.addCell(celda);
+			
+			tabla.addCell(new PdfPCell(new Phrase("Nombre")));
+			tabla.addCell(new PdfPCell(new Phrase(cliente.getNombre())));
+			tabla.addCell(new PdfPCell(new Phrase("Ciudad")));
+			tabla.addCell(new PdfPCell(new Phrase(cliente.getCiudad())));
+			tabla.addCell(new PdfPCell(new Phrase("Direccion")));
+			tabla.addCell(new PdfPCell(new Phrase(cliente.getDireccionLinea1())));
+			
+			
 
 			documento.add(tabla);
 
@@ -137,11 +145,18 @@ public class GestionPedidoCliente {
 
 			for (DetallePedido linea : pedido.getLineas()) {
 				tabla.addCell(new PdfPCell(new Phrase(linea.getCodigoProducto())));
-				tabla.addCell(new PdfPCell(new Phrase(linea.getCantidadPedida())));
-				tabla.addCell(new PdfPCell(new Phrase(linea.getPrecioUnidad())));
+				tabla.addCell(new PdfPCell(new Phrase(linea.getCantidadPedida().toString())));
+				tabla.addCell(new PdfPCell(new Phrase(linea.getPrecioUnidad().toString())));
 			}
+			
+			celda = new PdfPCell(new Phrase("Total"));
+			celda.setColspan(2);
+			celda.setHorizontalAlignment(celda.ALIGN_RIGHT);
+			tabla.addCell(celda);
+			tabla.addCell(new Phrase(gestPedidos.getImportePedido(idPedido).toString()));
+			
 			documento.add(tabla);
-
+			
 			documento.close();
 			respuesta = true;
 		} catch (FileNotFoundException e) {
