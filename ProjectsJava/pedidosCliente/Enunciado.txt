@@ -16,8 +16,11 @@ Ejercicio Inventado:
  	   de tal forma:
  	   Ej:
  	   
- 	   id;nombre;numeroPedidos;Importe
+ 	   MODELO -> id;nombre;numeroPedidos;Importe
+ 	   
  	   103;Atelier graphique;3;22314.36
+ 	   112;Signal Gift Stores;3;80180.98
+	   114;Australian Collectors, Co.;5;180585.06
  	   
  	   Nota: No hace falta usar la tabla producto para sacar el importe.
  	   

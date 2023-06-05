@@ -21,6 +21,12 @@ public class GestionDetallesPedidos {
 		return lineas;
 	}
 	
+	/**
+	 * Metodo que devuelve un array de Detallepedidos, que son las lineas de un pedido
+	 * el array se devolvera ordenado por lineas (Propiedad de DetallesPedido llamado numeroLineas)
+	 * @param id
+	 * @return
+	 */
 	public DetallePedido[] getLineasByID(String id){
 		
 		ArrayList<DetallePedido> lineasFiltradas= getListFilter(id); 	
@@ -28,7 +34,11 @@ public class GestionDetallesPedidos {
 		return getlineasPedido(lineasFiltradas);
 	}
 
-
+	/**
+	 * Metodo que devuelve las lineas de un pedido
+	 * @param id String id de un Pedido
+	 * @return
+	 */
 	private ArrayList<DetallePedido> getListFilter(String id) {
 		ArrayList<DetallePedido> lineasFiltradas= new ArrayList<DetallePedido>();
 		
@@ -61,6 +71,21 @@ public class GestionDetallesPedidos {
 		DetallePedido[] lineasProdcuto = new DetallePedido[lineasFiltradas.size()];
 		
 		return lineasProdcuto;
+	}
+	
+	/**
+	 * Metodo que devuelve el importe total de un pedido
+	 * @param pedido
+	 * @return Float del importe de un pedido
+	 */
+	public Float getImporteLineasPedido(Pedido pedido) {
+		Float importe= 0F;
+		if(pedido != null) {
+			for (DetallePedido linea : pedido.getLineas()) {
+				importe+=(linea.getPrecioUnidad()*linea.getCantidadPedida());
+			}
+		}
+		return importe;
 	}
 	
 	

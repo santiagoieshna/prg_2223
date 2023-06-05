@@ -21,7 +21,11 @@ public class GestionClientes {
 		clientes = ClienteRepository.cargarClientes();
 
 	}
-
+	
+	public ArrayList<Cliente> getClientes(){
+		return this.clientes;
+	}
+	
 	public void printTodosClientes() {
 		for (Cliente cliente : this.clientes) {
 			System.out.println(cliente.toString());

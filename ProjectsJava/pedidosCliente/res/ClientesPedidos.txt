@@ -1,0 +1,124 @@
+12;Harnina;0;0.0
+103;Atelier graphique;3;22314.36
+112;Signal Gift Stores;3;80180.98
+114;Australian Collectors, Co.;5;180585.06
+119;La Rochelle Gifts;4;158573.11
+121;Baane Mini Imports;4;104224.78
+124;Mini Gifts Distributors Ltd.;17;591827.4
+125;Havel & Zbyszek Co;0;0.0
+128;Blauer See Auto, Co.;4;75937.76
+129;Mini Wheels Co.;3;66710.56
+131;Land of Toys Inc.;4;149085.16
+141;Euro+ Shopping Channel;26;820689.56
+144;Volvo Model Replicas, Co;4;66694.82
+145;Danish Wholesale Imports;5;129085.12
+146;Saveley & Henriot, Co.;3;130305.34
+148;Dragon Souveniers, Ltd.;5;156251.05
+151;Muscle Machine Inc;4;177913.95
+157;Diecast Classics Inc.;4;104358.69
+161;Technics Stores Inc.;4;104545.21
+166;Handji Gifts& Co;4;107746.74
+167;Herkku Gifts;3;97562.47
+168;American Souvenirs Inc;0;0.0
+169;Porto Imports Co.;0;0.0
+171;Daedalus Designs Imports;2;61781.7
+172;La Corne D'abondance, Co.;3;86553.516
+173;Cambridge Collectables Co.;2;32198.688
+175;Gift Depot Inc.;3;95424.63
+177;Osaka Souveniers Co.;2;62361.21
+181;Vitachrome Inc.;3;72497.64
+186;Toys of Finland, Co.;3;95546.45
+187;AV Stores, Co.;3;148410.1
+189;Clover Collections, Co.;2;49898.27
+198;Auto-Moto Classics Inc.;3;21554.262
+201;UK Collectables, Ltd.;3;106610.72
+202;Canadian Gift Exchange Network;2;70122.19
+204;Online Mini Collectables;2;55577.26
+205;Toys4GrownUps.com;3;93803.31
+206;Asian Shopping Network, Co;0;0.0
+209;Mini Caravy;3;75859.32
+211;King Kong Collectables, Co.;2;45480.79
+216;Enaco Distributors;3;68520.47
+219;Boards & Toys Co.;2;7918.6
+223;Nat??rlich Autos;0;0.0
+227;Heintze Collectables;2;89909.8
+233;Qu?®bec Home Shopping Network;3;68977.67
+237;ANG Resellers;0;0.0
+239;Collectable Mini Designs Co.;2;80375.234
+240;giftsbymail.co.uk;2;71783.75
+242;Alpha Cognac;3;60483.36
+247;Messner Shopping Network;0;0.0
+249;Amica Models & Co.;2;82223.234
+250;Lyon Souveniers;3;67659.19
+256;Auto Associ?®s & Cie.;2;58876.414
+259;Toms Spezialit?ñten, Ltd;2;89223.14
+260;Royal Canadian Collectables, Ltd.;2;66812.0
+273;Franken Gifts, Co;0;0.0
+276;Anna's Decorations, Ltd;4;137034.22
+278;Rovelli Gifts;3;127529.7
+282;Souveniers And Things Co.;4;133907.12
+286;Marta's Replicas Co.;2;90545.375
+293;BG&E Collectables;0;0.0
+298;Vida Sport, Ltd;2;108777.92
+299;Norway Gifts By Mail, Co.;2;69059.05
+303;Schuyler Imports;0;0.0
+307;Der Hund Imports;0;0.0
+311;Oulu Toy Supplies, Inc.;3;95706.14
+314;Petit Auto;3;70851.58
+319;Mini Classics;2;78432.164
+320;Mini Creations Ltd.;3;101872.516
+321;Corporate Gift Ideas Co.;4;132340.78
+323;Down Under Souveniers, Inc;5;154622.08
+324;Stylish Desk Decors, Co.;3;80556.73
+328;Tekni Collectables Inc.;3;81806.55
+333;Australian Gift Network, Co;3;55190.164
+334;Suominen Souveniers;3;103896.734
+335;Cramer Spezialit?ñten, Ltd;0;0.0
+339;Classic Gift Ideas, Inc;2;57939.344
+344;CAF Imports;2;46751.14
+347;Men 'R' US Retailers, Ltd.;2;41506.19
+348;Asian Treasures, Inc.;0;0.0
+350;Marseille Mini Autos;3;71547.53
+353;Reims Collectables;5;126983.19
+356;SAR Distributors, Co;0;0.0
+357;GiftsForHim.com;3;94431.766
+361;Kommission Auto;0;0.0
+362;Gifts4AllAges.com;3;84340.33
+363;Online Diecast Creations Co.;3;116449.28
+369;Lisboa Souveniers, Inc;0;0.0
+376;Precious Collectables;0;0.0
+379;Collectables For Less Inc.;3;73533.65
+381;Royale Belge;4;29217.18
+382;Salzburg Collectables;4;137480.08
+385;Cruz & Sons Co.;3;87468.3
+386;L'ordine Souveniers;3;125505.58
+398;Tokyo Collectables, Ltd;4;105548.734
+406;Auto Canal+ Petit;3;86436.97
+409;Stuttgart Collectable Exchange;0;0.0
+412;Extreme Desk Decorations, Ltd;3;90332.375
+415;Bavarian Collectables Imports, Co.;1;31310.086
+424;Classic Legends Inc.;3;69214.33
+443;Feuer Online Stores, Inc;0;0.0
+447;Gift Ideas Corp.;3;49967.78
+448;Scandinavian Gift Ideas;3;120943.52
+450;The Sharp Gifts Warehouse;4;143536.27
+452;Mini Auto Werke;3;51059.992
+455;Super Scale Inc.;2;70378.65
+456;Microscale Inc.;2;29230.432
+458;Corrida Auto Replicas, Ltd;3;112440.09
+459;Warburg Exchange;0;0.0
+462;FunGiftIdeas.com;3;88627.484
+465;Anton Designs, Ltd.;0;0.0
+471;Australian Collectables, Ltd;3;55866.016
+473;Frau da Collezione;2;25358.32
+475;West Coast Collectables Co.;2;43748.723
+477;Mit Vergn??gen & Co.;0;0.0
+480;Kremlin Collectables, Co.;0;0.0
+481;Raanan Stores, Inc;0;0.0
+484;Iberia Gift Imports, Corp.;2;50987.85
+486;Motor Mint Distributors Inc.;3;77726.59
+487;Signal Collectibles Ltd.;2;42570.37
+489;Double Decker Gift Stores, Ltd;2;29586.152
+495;Diecast Collectables;2;65541.74
+496;Kelly's Gift Shop;4;137460.8
+497;Del Valle;0;0.0

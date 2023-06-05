@@ -17,13 +17,12 @@ public class PedidoDAO {
 										+ "estado,comentarios, numeroCliente) VALUES (?,?,?,?,?,?)";
 	private final String UPDATE_PEDIDOS= "UPDATE pedidos SET fechaPedido=?, fechaEntrega=?,estado=?,"
 										+ "comentarios=?,numeroCliente=? WHERE numeroPedido=?";
-	GestionDetallesPedidos gestLineas;
-	
+
 	public PedidoDAO() {
 		super();
 		
 		this.conexion = ConexionBD.getConexion();
-		gestLineas = new GestionDetallesPedidos();
+		
 	}
 	
 	public ArrayList<Pedido> cargarPedidos(){
@@ -56,8 +55,6 @@ public class PedidoDAO {
 		pedido.setEstado(rs.getString("estado"));
 		pedido.setComentarios(rs.getString("comentarios"));
 		pedido.setNumeroCliente(rs.getString("numeroCliente"));
-		
-		pedido.setLineas(gestLineas.getLineasByID(pedido.getNumeroPedido()));
 		
 		return pedido;
 	}
