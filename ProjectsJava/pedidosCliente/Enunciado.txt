@@ -33,7 +33,7 @@ Ejercicio Inventado:
  	     
  	   Nota: Este apartado tendra puntos extra si en vez de que se muestre por consola, se genera en un pdf
  	   
- 	6)
+ 	6) Salir
  	
  	
  	
